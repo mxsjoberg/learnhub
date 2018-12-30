@@ -1,0 +1,24 @@
+<!-- delete_account -->
+<div class="modal modal-sm" id="modal_delete_account">
+    <a class="modal-overlay close" aria-label="Close"></a>
+    <div class="modal-container p-2">
+        <div class="modal-header">
+            <!-- <a class="btn btn-clear float-right close" aria-label="Close"></a> -->
+            <h3 class="modal-title m-0">Delete account</h3>
+        </div>
+        <form class="form-horizontal p-0" method="post" name="form_delete_account" enctype="multipart/form-data">
+            <div class="modal-body pt-0">
+                <div class="content">
+                    <p class="mb-2">You are about to delete your account, this cannot be undone.</p>
+                    <!-- delete_account_password-->
+                    <label class="form-label" for="delete_account_password">Password</label>
+                    <input class="form-input" type="password" name="delete_account_password" placeholder="Password">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a class="btn btn-secondary close">Close</a>
+                <button for="delete_account_password" class="btn btn-primary" name="delete_account_submit" type="submit">Delete account</button>
+            </div>
+        </form>
+    </div>
+</div>

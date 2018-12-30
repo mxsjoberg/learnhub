@@ -1,0 +1,11 @@
+<div id="notifications">
+    <!-- messages with categories -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% for category, message in messages %}
+        <div class="toast toast-{{ category }} mt-2">
+            <a class="btn btn-clear float-right notification close"></a>
+            {{ message }}
+        </div>
+        {% endfor %}
+    {% endwith %}
+</div>

@@ -1,0 +1,159 @@
+{% include 'head.html' %}
+
+{% include 'nav.html' %}
+
+<div id="content">
+
+{% include 'notifications.html' %}
+
+{% include 'modals/changelog.html' %}
+
+<div class="container hero hero-sm bg-primary">
+    <div class="columns hero-body">
+        <!-- avatar -->
+        <div class="column col-3 col-md-12 text-center pb-3">
+            <figure class="avatar avatar-xl">
+                <img src="{% if avatar %}{{ avatar }}{% else %}{% endif %}" alt="Avatar">
+            </figure>
+        </div>
+        <!-- text -->
+        <div class="column col-9 col-md-12">
+            <h1 class="m-0">
+                <span class="font-weight-bold">Hi there, {{ username.upper() }}!</span>
+            </h1>
+            {% if ((skills == null) or (skills == False) or (skills == [])) %}
+            <h2 class="m-0"><small>Ready to get started?</small></h2>
+            <h3 class="mt-2">
+                <a href="#skill_name" class="btn btn-secondary">Add skill</a>
+            </h3>
+            {% elif ((projects == null) or (projects == False) or (projects == [])) %}
+            <h2 class="m-0"><small>Add a project to show off your skills!</small></h2>
+            <h3 class="mt-2">
+                <a href="#project_name" class="btn btn-secondary">Add project</a>
+            </h3>
+            {% else %}
+            <h2 class="m-0"><small>Ready to learn something new?</small></h2>
+            <h3 class="mt-2"><a href="/explore" class="btn btn-secondary">Explore pathways</a></h3>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<!-- SKILLS -->
+<div class="container">
+    <div class="divider text-center" data-content="SKILLS"></div>
+    <div class="columns">
+        <div class="column col-12">
+            <div id="skill_wrapper" class="columns">
+                <!-- add skill -->
+                <div class="column col-12">
+                    <div class="form-group">
+                        <!-- form -->
+                        <form method="post" enctype="multipart/form-data">
+                            <div class="columns">
+                                <!-- skill_name -->
+                                <div class="column col-3 col-md-6 mb-2">
+                                    <div class="has-icon-right">
+                                        <input id="skill_name" class="form-input" type="text" name="skill_name" placeholder="Java">
+                                        <i id="skill_name_icon" class="form-icon"></i>
+                                    </div>
+                                </div>
+                                <!-- skill_level -->
+                                <div class="column col-7 col-md-6 mb-2">
+                                    <select class="form-select" name="skill_level">
+                                        <option value=20>Beginner</option>
+                                        <option value=40>Intermediate</option>
+                                        <option value=60>Advanced</option>
+                                        <option value=80>Expert</option>
+                                        <option value=100>Master</option>
+                                    </select>
+                                </div>
+                                <!-- skill_submit -->
+                                <div class="column col-2 col-md-12 mb-2">
+                                    <button id="skill_submit" class="btn btn-primary btn-block" type="submit">Add skill</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!-- empty -->
+                {% if ((skills == False) or (skills == [])) %}
+                <div id="skill_empty" class="column col-12 empty">
+                    <p class="empty-title h5 m-0">You haven't added any skills yet</p>
+                    <div class="empty-action">
+                        <label for="skill_name" class="btn btn-primary">Add skill</label>
+                        <a href="/explore" class="btn btn-secondary">Learn new skills</a>
+                    </div>
+                </div>
+                <!-- for each skill -->
+                {% else %}
+                    {% for skill in skills %}
+                        {% include 'skill.html' %}
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- PROJECTS -->
+<div class="container">
+    <div class="divider text-center" data-content="PROJECTS"></div>
+    <div class="columns">
+        <div class="column col-12">
+            <div id="projects_wrapper" class="columns">
+                <!-- add project -->
+                <div class="column col-6 col-md-12 p-2">
+                    <div class="card">
+                        <form method="post" enctype="multipart/form-data">
+                            <div class="card-header pb-4">
+                                <div class="card-title h5">Create new project</div>
+                            </div>
+                            <div class="card-body pt-0">
+                                <!-- project_name -->
+                                <label class="form-label" for="project_name">Name</label>
+                                <div class="has-icon-right">
+                                    <input id="project_name" class="form-input mb-2" type="text" name="project_name" placeholder="My awesome app">
+                                    <i id="project_name_icon" class="form-icon"></i>
+                                </div>
+                                <!-- project_skills -->
+                                <select id="project_skills" class="form-select multiple" name="project_skills" multiple="multiple">
+                                    <option></option>
+                                    {% if ((skills != False) and (skills != [])) %}
+                                        {% for skill in skills %}
+                                            <option value="{{ skill['skill_id'] }}">{{ skill['skill_name'] }}</option>
+                                        {% endfor %}
+                                    {% endif %}
+                                </select>
+                                <!-- project_description -->
+                                <label class="form-label" for="project_description">Description</label>
+                                <textarea class="form-input" type="text" name="project_description" placeholder="This awesome app makes everything better, true story." maxlength="150"></textarea>
+                                <!-- project_link -->
+                                <label class="form-label" for="project_link">Link to project (website, repo, article)</label>
+                                <input class="form-input mb-2" type="text" name="project_link" placeholder="https://my-awesome-app.com">
+                            </div>
+                            <div class="card-footer pt-4">
+                                <!-- project_submit -->
+                                <button id="project_submit" class="btn btn-primary btn-block" type="submit">Add project</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!-- empty -->
+                {% if ((projects == False) or (projects == [])) %}
+                <!-- for each skill -->
+                {% else %}
+                    {% for project in projects %}
+                        {% include 'projects.html' %}
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% include 'pre-footer.html' %}
+
+</div><!-- ./content -->
+
+{% include 'footer.html' %}

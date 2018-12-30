@@ -1,0 +1,56 @@
+<li id="{{ pathway['_id'] }}" class="column col-12 p-0 mt-2" style="list-style:none;" data-search='{{ pathway["owner"] + " " + pathway["name"] + " " + " ".join(pathway["tags"]) }}'>
+    <div class="card">
+        <div class="card-header pb-4">
+            <div class="card-title h5">{{ pathway["name"] }}</div>
+            <div class="card-subtitle">
+                {% for tag in pathway["tags"] %}
+                <span class="chip float-right">{{ tag }}</span>
+                {% endfor %}
+                <span>
+                Created by <a href='/profile/{{ pathway["owner"] }}' class="text-uppercase font-weight-bold" style="text-decoration:none;">{{ pathway["owner"] }}</a></span>
+            </div>
+
+            <div class="card-subtitle">
+                <label class="btn btn-secondary mt-2 label-accordion" for="accordion-{{ pathway['_id'] }}">View</label>
+
+                <!-- pin -->
+                <button id="button_pin_pathway" data-pathway-id="{{ pathway['_id'] }}" class="btn btn-secondary button-pin mt-2">Pin</button>
+                {% if email and username == pathway["owner"] %}
+                <button id="button_save_pathway" data-pathway-id="{{ pathway['_id'] }}" class="btn btn-secondary mt-2" disabled>Save (this feature is not available yet)</button>
+                <button id="button_edit_pathway" data-pathway-id="{{ pathway['_id'] }}" data-pathway-name="{{ pathway['name'] }}" class="btn btn-primary mt-2">Edit</button>
+                {% endif %}
+            </div>
+        </div>
+        <div class="accordion">
+            <input type="checkbox" id="accordion-{{ pathway['_id'] }}" name="accordion-checkbox" hidden>
+            <div class="accordion-body m-0">
+                <div class="columns card-body pt-0">
+                    <div class="column col-4"><p class="font-weight-bold m-0">Resource</p></div>
+                    <div class="column col-2"><p class="font-weight-bold m-0">Type</p></div>
+                    <div class="column col-6"><p class="font-weight-bold m-0">URL</p></div>
+                    {% for resource in pathway["resources"] %}
+                    <div class="column col-4">
+                        <p class="m-0">{{ resource['name'] }}</p>
+                    </div>
+                    <div class="column col-2">
+                        <p class="m-0">
+                            {% if resource['type'] == "1" %}
+                            Textbook
+                            {% elif resource['type'] == "2" %}
+                            MOOC
+                            {% elif resource['type'] == "3" %}
+                            Website
+                            {% else %}
+                            Other
+                            {% endif%}
+                        </p>
+                    </div>
+                    <div class="column col-6">
+                        <a href="{{ resource['link'] }}" target="_blank" class="">{{ resource['link'] }}</a>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</li>

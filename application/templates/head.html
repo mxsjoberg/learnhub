@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en" class='{% if request.path == "/" %}index{% endif %}'>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<title>{{ title }} | LearnHub.io</title>
+
+<!-- Favicon -->
+<link rel="shortcut icon" href="{{ url_for('static', filename='fav.png') }}">
+
+<!-- Main CSS STATIC -->
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}">
+
+<!-- jQuery JS STATIC -->
+<script src="{{ url_for('static', filename='jquery-3.2.1.min.js') }}"></script>
+<script type=text/javascript>$SCRIPT_ROOT = {{ request.script_root|tojson|safe }};</script>
+
+<!-- Select2 CSS + JS STATIC -->
+<link href="{{ url_for('static', filename='select2.min.css') }}" rel="stylesheet" />
+<script src="{{ url_for('static', filename='select2.min.js') }}"></script>
+
+{% if request.path == url_for('profile', username=username) %}
+<!-- Capture screen and generate image -->
+<script type="text/javascript" charset="utf8" src="{{ url_for('static', filename='capture.js') }}"></script>
+<!-- Facebook META -->
+<meta property="og:title" content="{% if (name) %}{{ name }}{% else %}Anonymous{% endif %} profile on Doolio.co">
+<meta property="og:description" content="A skill tracker and curated list with remote learning pathways.">
+<meta property="og:image" content="">
+<meta property="og:url" content="https://www.doolio.co/profile/{{ username }}">
+<meta property="og:site_name" content="Doolio.co">
+<!-- Twitter META -->
+<meta name="twitter:card" content="">
+<meta name="twitter:image:alt" content="{% if (name) %}{{ name }}{% else %}Anonymous{% endif %} profile on Doolio.co">
+{% endif %}
+
+</head>
+<body>

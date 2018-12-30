@@ -1,0 +1,17 @@
+<div class="container">
+	<header class="navbar py-2">
+		<section class="navbar-section">
+			<img src="{{ url_for('static', filename='fav.png') }}" style="max-height: 24px;"> 
+			<a href="/" class="btn btn-link ml-2">Home</a>
+			<a href="/explore" class="btn btn-link">Explore</a>
+		</section>
+		<section class="navbar-section">
+			{% if email %}
+			<span class="hide-lg">Logged in as: <span class="font-weight-bold">{{ username.upper() }}</span> ({{ email }})</span>
+			<a href="/settings" class="btn btn-link ml-2">Settings</a>
+			<a href="/logout" class="btn btn-link">Logout</a>
+			{% else %}
+			{% endif %}
+		</section>
+	</header>
+</div>

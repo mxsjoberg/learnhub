@@ -1,0 +1,86 @@
+{% include 'head.html' %}
+
+{% include 'nav.html' %}
+
+<div id="content">
+
+{% include 'notifications.html' %}
+
+{% include 'modals/changelog.html' %}
+
+<div class="container hero hero-sm bg-primary">
+    <div class="columns hero-body">
+        <!-- avatar -->
+        <div class="column col-3 text-center">
+            <figure class="avatar avatar-xl">
+                <img src="{% if avatar %}{{ avatar }}{% else %}{% endif %}" alt="Avatar">
+            </figure>
+        </div>
+        <!-- details -->
+        <div class="column col-9">
+            <h1 class="m-0">
+                <span class="font-weight-bold">{% if name %}{{ name }}{% else %}Anonymous{% endif %}</span>
+                <h2 class="m-0"><small>{% if location %}{{ location }}{% else %}No location{% endif %}</small></h2>
+                <h3 class="mt-2 font-weight-base">
+                    {% if facebook %}
+                    <a href="https://facebook.com/{{ facebook }}" target="_blank" class="color-white mr-1 tooltip" data-tooltip="Facebook" style="text-decoration:none;"><i class="fab fa-facebook"></i></a>
+                    {% endif %}
+                    {% if twitter %}
+                    <a href="https://twitter.com/{{ twitter }}" target="_blank" class="color-white mr-1 tooltip" data-tooltip="Twitter" style="text-decoration:none;"><i class="fab fa-twitter"></i></a>
+                    {% endif %}
+                    {% if github %}
+                    <a href="https://github.com/{{ github }}" target="_blank" class="color-white mr-1 tooltip" data-tooltip="GitHub" style="text-decoration:none;"><i class="fab fa-github"></i></a>
+                    {% endif %}
+                </h3>
+            </h1>
+        </div>
+    </div>
+</div>
+
+<!-- SKILLS -->
+<div class="container">
+    <div class="divider text-center" data-content="SKILLS"></div>
+    <div class="columns">
+        <div class="column col-12">
+            <div id="skill_wrapper" class="columns">
+                <!-- empty -->
+                {% if ((skills == False) or (skills == [])) %}
+                <div class="column col-12 empty">
+                    <p class="empty-title h5 m-0">This user didn't add any skills yet</p>
+                    <div class="empty-action">
+                        <button class="btn btn-secondary">Explore skills</button>
+                    </div>
+                </div>
+                <!-- for each skill -->
+                {% else %}
+                    {% for skill in skills %}
+                        {% include 'skill.html' %}
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- PROJECTS -->
+{% if ((projects != False) and (projects != [])) %}
+<div class="container">
+    <div class="divider text-center" data-content="PROJECTS"></div>
+    <div class="columns">
+        <div class="column col-12">
+            <div id="projects_wrapper" class="columns">
+                <!-- for each project -->
+                {% for project in projects %}
+                    {% include 'projects.html' %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+{% include 'pre-footer.html' %}
+
+</div><!-- ./content -->
+
+{% include 'footer.html' %}

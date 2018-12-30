@@ -1,0 +1,55 @@
+<!-- modal_create_new_pathway -->
+<div id="modal_create_new_pathway" class="modal">
+    <a class="modal-overlay" aria-label="Close"></a>
+    <div class="modal-container p-2">
+        <div class="modal-header">
+            <!-- <a class="btn btn-clear float-right close" aria-label="Close"></a> -->
+            <h3 class="modal-title m-0">Create new pathway</h3>
+        </div>
+        <div class="modal-body p-0 pb-4">
+            <div class="container">
+            {% if email %}
+                <form method="post" name="form_create_new_pathway" enctype="multipart/form-data">
+                    <div class="columns">
+                        <div class="column col-12 col-md-12">
+                            <!-- pathway_name -->
+                            <label class="form-label" for="pathway_name">Name</label>
+                            <div class="has-icon-right">
+                                <input id="pathway_name" class="form-input mb-2" type="text" name="pathway_name" placeholder="Beginner Java development">
+                                <i id="pathway_name_icon" class="form-icon"></i>
+                            </div>
+                        </div>
+                        <div class="column col-5 col-md-12">
+                            <!-- pathway_level -->
+                            <select class="form-select mb-2" name="pathway_level">
+                                <option value="Beginner">Beginner</option>
+                                <option value="Intermediate">Intermediate</option>
+                                <option value="Advanced">Advanced</option>
+                                <option value="Expert">Expert</option>
+                                <option value="Master">Master</option>
+                            </select>
+                        </div>
+                        <div class="column col-7 col-md-12">
+                            <!-- pathway_tags -->
+                            <select id="pathway_tags" class="form-select multiple" name="pathway_tags" multiple="multiple">
+                                <option></option>
+                            </select>
+                        </div>
+                        <div class="column col-12 col-md-12">
+                            <!-- pathway_owners -->
+                            <label class="form-label" for="pathway_owners">Owners (this feature is not available yet)</label>
+                            <select id="pathway_owners" class="form-select multiple" name="pathway_owners" multiple="multiple" disabled>
+                                <option value="{{ username }}" selected>{{ username.upper() }}</option>
+                            </select>
+                        </div>
+                    </div>
+                </form>
+            {% endif %}
+            </div>
+        </div>
+        <div class="modal-footer">
+            <a class="btn btn-secondary close" aria-label="Close">Close</a>
+            <button for="form_create_new_pathway" class="btn btn-primary" name="create_new_pathway_submit" type="submit">Create</button>
+        </div>
+    </div>
+</div>

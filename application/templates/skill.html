@@ -1,0 +1,20 @@
+<div id="{{ skill['skill_id'] }}" class="column col-12">
+    <div class="columns">
+        <!-- skill_name -->
+        <div class="column col-3 p-2">
+            <p class="m-0 pl-2">{{ skill["skill_name"] }}</p>
+        </div>
+        <!-- skill_level -->
+        <div class="column {% if email %}col-8{% else %}col-9{% endif %} p-2">
+            <div class="bar">
+                <div class="bar-item" role="progressbar" style="width:{{ skill['skill_level'] }}%;" aria-valuenow="{{ skill['skill_level'] }}" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+        </div>
+        {% if email %}
+        <!-- skill_delete -->
+        <div class="column col-1">
+            <button class="btn btn-link btn-block delete tooltip tooltip-left" data-tooltip='Remove skill: {{ skill["skill_name"] }}' type="submit" data-skill-id="{{ skill['skill_id'] }}"><i class="fas fa-minus-circle"></i></button>
+        </div>
+        {% endif %}
+    </div>
+</div>

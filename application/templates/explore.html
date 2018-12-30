@@ -1,0 +1,61 @@
+{% include 'head.html' %}
+
+{% include 'nav.html' %}
+
+<div id="content">
+
+{% include 'notifications.html' %}
+
+{% include 'modals/changelog.html' %}
+
+{% if email %}
+{% include 'modals/create_new_pathway.html' %}
+{% include 'modals/edit_pathway.html' %}
+{% endif %}
+
+<div class="container hero hero-sm bg-primary">
+    <div class="columns hero-body">
+        <div class="column col-12 col-md-12 col-mx-auto pl-4">
+            <h1 class="m-0">Explore pathways</h1>
+            <!-- <h2 class="m-0"><small>Can't find what you need?</small></h2> -->
+            {% if email %}
+            <h3 class="mt-2"><a id="button_create_new_pathway" class="btn btn-secondary">Create new pathway</a></h3>
+            {% else %}
+            <h3 class="mt-2"><a href="/login" class="btn btn-secondary">Login to create new pathway</a></h3>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<!-- ALL PATHWAYS -->
+<div class="container">
+    <div class="divider text-center" data-content="PATHWAYS"></div>
+    <div class="columns">
+        <div class="column col-12 col-md-12 col-mx-auto">
+            <div id="pathways_wrapper" class="columns">
+                <!-- empty -->
+                {% if ((pathways == False) or (pathways == [])) %}
+                <div class="column col-12 empty">
+                    <p class="empty-title h5 m-0">Something went wrong, try reloading the page.</p>
+                </div>
+                <!-- for each pathway -->
+                {% else %}
+                <div class="column {% if email %}col-12{% else %}col-12{% endif %} col-md-12 col-mx-auto pt-0">
+                    <input id="search" class="form-input" name="search" placeholder="Start typing to search" type="text" data-list=".list" autocomplete="off">
+                    <div id="pathways_wrapper_list" class="list">
+                    {% for pathway in pathways %}
+                        {% include 'pathways.html' %}
+                    {% endfor %}
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% include 'pre-footer.html' %}
+
+</div><!-- ./content -->
+
+{% include 'footer.html' %}

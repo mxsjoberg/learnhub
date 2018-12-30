@@ -1,0 +1,158 @@
+{% include 'head.html' %}
+
+{% include 'nav.html' %}
+
+<div id="content">
+
+{% include 'notifications.html' %}
+
+{% include 'modals/change_password.html' %}
+
+{% include 'modals/delete_account.html' %}
+
+<div class="container hero hero-sm">
+    <!-- intro -->
+    <div class="columns hero-body">
+        <div class="column col-6 col-md-12 col-mx-auto p-0">
+            <h1 class="m-0">
+                <span class="font-weight-bold">Settings</span>
+            </h1>
+            <p class="m-0">You can view your public profile at <a href="/profile/{{ username }}" class="font-weight-bold">https://learnhub.io/profile/{{ username }}</a></p>
+        </div>
+    </div>
+</div>
+
+<div class="container pb-xl">
+    <div class="columns">
+        <div class="column col-6 col-md-12 col-mx-auto">
+            <div class="columns">
+                <!-- account_update -->
+                <div class="column col-12 col-mx-auto pt-4">
+                    <form id="form_test" class="form-horizontal p-0" method="post" enctype="multipart/form-data">
+                        <!-- account_update_email -->
+                        <div class="form-group">
+                            <div class="col-3 col-md-12">
+                                <label class="form-label" for="account_update_email">Email</label>
+                            </div>
+                            <div class="col-9 col-md-12 tooltip" data-tooltip="It's currently not possible to change email">
+                                <input class="form-input" type="email" name="account_update_email" value="{{ email }}" disabled>
+                            </div>
+                        </div>
+                        <!-- account_update_password -->
+                        <div class="form-group">
+                            <div class="col-3 col-md-12">
+                                <label class="form-label" for="account_update_password">Password</label>
+                            </div>
+                            <div class="col-9 col-md-12">
+                                <a href="#" id="button_change_password" class="btn btn-secondary btn-block" name="account_update_password"><i class="fa fa-lock"></i> Change password</a>
+                            </div>
+                        </div>
+                        <!-- account_update_username -->
+                        <div class="form-group">
+                            <div class="col-3 col-md-12">
+                                <label class="form-label" for="account_update_username">Username</label>
+                            </div>
+                            <div class="col-9 col-md-12">
+                                <input class="form-input" type="text" name="account_update_username" placeholder="{{ username }}" pattern="[a-zA-Z][a-zA-Z0-9-_\.]{1,20}$">
+                            </div>
+                        </div>
+                        <!-- account_update_name -->
+                        <div class="form-group">
+                            <div class="col-3 col-md-12">
+                                <label class="form-label" for="account_update_name">Name</label>
+                            </div>
+                            <div class="col-9 col-md-12 {% if name %}input-group{% endif %}">
+                                <input class="form-input" type="text" name="account_update_name" placeholder="{% if name %}{{ name }}{% endif %}" pattern="[A-Za-z ]{1,32}$">
+                                {% if name %}
+                                <a id="account_update_name" class="btn btn-secondary input-group-btn remove-account-detail">Remove</a>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <!-- account_update_location -->
+                        <div class="form-group">
+                            <div class="col-3 col-md-12">
+                                <label class="form-label" for="account_update_location">Location</label>
+                            </div>
+                            <div class="col-9 col-md-12 {% if location %}input-group{% endif %}">
+                                <input class="form-input" type="text" name="account_update_location" placeholder="{% if location %}{{ location }}{% endif %}" pattern="[A-Za-z ,]{1,32}$">
+                                {% if location %}
+                                <a id="account_update_location" class="btn btn-secondary input-group-btn remove-account-detail">Remove</a>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <!-- account_update_avatar -->
+                        <div class="form-group">
+                            <div class="col-3 col-md-12">
+                                <label class="form-label" for="account_update_avatar">Avatar (png, jpg)</label>
+                            </div>
+                            <div class="col-9 col-md-12 {% if avatar %}input-group{% endif %}">
+                                <input class="form-input" type="file" name="account_update_avatar">
+                                {% if avatar %}
+                                <span class="input-group-addon" style="max-height:41px;padding:0.2rem;">
+                                    <img src="{{ avatar }}" style="max-height:31px;border-radius:50%;">
+                                </span>
+                                <a class="btn btn-secondary input-group-btn remove-account-avatar" style="height:41px;line-height:1.4rem;">Remove</a>
+                            {% endif %}
+                            </div>
+                        </div>
+                        <!-- account_update_facebook -->
+                        <div class="form-group">
+                            <div class="col-3 col-md-12">
+                                <label class="form-label" for="account_update_facebook"><i class="fab fa-facebook"></i> Facebook</label>
+                            </div>
+                            <div class="col-9 col-md-12 {% if facebook %}input-group{% endif %}">
+                                <input class="form-input" type="text" name="account_update_facebook" placeholder="{% if facebook %}{{ facebook }}{% endif %}">
+                                {% if facebook %}
+                                <a id="account_update_facebook" class="btn btn-secondary input-group-btn remove-account-detail">Remove</a>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <!-- account_update_twitter -->
+                        <div class="form-group">
+                            <div class="col-3 col-md-12">
+                                <label class="form-label" for="account_update_twitter"><i class="fab fa-twitter"></i> Twitter</label>
+                            </div>
+                            <div class="col-9 col-md-12 {% if twitter %}input-group{% endif %}">
+                                <input class="form-input" type="text" name="account_update_twitter" placeholder="{% if twitter %}{{ twitter }}{% endif %}">
+                                {% if twitter %}
+                                <a id="account_update_twitter" class="btn btn-secondary input-group-btn remove-account-detail">Remove</a>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <!-- account_update_github -->
+                        <div class="form-group">
+                            <div class="col-3 col-md-12">
+                                <label class="form-label" for="account_update_github"><i class="fab fa-github"></i> GitHub</label>
+                            </div>
+                            <div class="col-9 col-md-12 {% if github %}input-group{% endif %}">
+                                <input class="form-input" type="text" name="account_update_github" placeholder="{% if github %}{{ github }}{% endif %}">
+                                {% if github %}
+                                <a id="account_update_github" class="btn btn-secondary input-group-btn remove-account-detail">Remove</a>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <!-- account_update_submit -->
+                        <div class="form-group m-0 pb-4">
+                            <div class="col-9 col-md-12 col-ml-auto">
+                                <button class="btn btn-primary btn-block" name="account_update_submit" type="submit">Save changes</button>
+                            </div>
+                        </div>
+                    </form>
+                    <!-- account_delete -->
+                    <div class="form-group m-0 pb-4">
+                        <div class="col-9 col-md-12 col-ml-auto">
+                            <div class="divider text-center" data-content="DELETE ACCOUNT"></div>
+                            <a href="#" id="button_delete_account" class="btn btn-primary btn-block">Delete account</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% include 'pre-footer.html' %}
+
+</div><!-- ./content -->
+
+{% include 'footer.html' %}

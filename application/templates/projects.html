@@ -1,0 +1,23 @@
+<div id="{{ project['project_id'] }}" class="column col-6 col-md-12 p-2">
+    <div class="card">
+        <div class="card-header pb-4">
+            <div class="card-title h5">{{ project["project_name"] }}</div>
+            <div class="card-subtitle">
+            {% for project_skill in project["project_skills"] %}
+                <span class="chip">{{ project_skill }}</span>
+            {% endfor %}
+            </div>
+        </div>
+        <div class="card-body pt-0">
+            <p class="m-0">{{ project["project_description"] }}</p>
+        </div>
+        <div class="card-footer pt-4">
+            {% if project['project_link'] %}
+            <a href="{{ project['project_link'] }}" target="_blank" class="btn btn-primary btn-primary"><i class="fa fa-link"></i> Link</a>
+            {% endif %}
+            {% if email %}
+            <button class="btn btn-primary delete-project" type="submit" data-project-id="{{ project['project_id'] }}"><i class="fas fa-trash"></i> Delete</button>
+            {% endif %}
+        </div>
+    </div>
+</div>

@@ -1,0 +1,82 @@
+{% include 'head.html' %}
+
+<div id="content" class="m-0">
+
+{% include 'notifications.html' %}
+
+{% include 'modals/changelog.html' %}
+
+<div class="container">
+    <div class="columns">
+        <div class="column col-6 col-sm-12 col-mx-auto">
+            <!-- intro -->
+            <div class="columns hero">
+                <div class="column hero-body text-center">
+                    <h1 class="m-0">
+                        <a href="/" style="text-decoration:none;box-shadow:none;">
+                            <img src="{{ url_for('static', filename='fav.png') }}" style="max-height:38px;margin-bottom:-6px;">
+                            <span class="ml-2 font-weight-bold">{{ domain }}</span>
+                            <small class="label">{{ version }}</small>
+                        </a>
+                    </h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container pb-xl">
+    <div class="columns">
+        <div class="column col-6 col-sm-12 col-mx-auto">
+            <!-- create new -->
+            <div class="columns">
+                <div class="column">
+                    <h3>Create new</h3>
+                    <form class="form-horizontal" method="post" enctype="multipart/form-data">
+                        <!-- create_new_email -->
+                        <div class="form-group">
+                            <div class="col-3">
+                                <label class="form-label" for="create_new_email">Email</label>
+                            </div>
+                            <div class="col-9">
+                                <input class="form-input" type="email" name="create_new_email" value="{{ email }}" disabled>
+                            </div>
+                        </div>
+                        <!-- create_new_username -->
+                        <div class="form-group">
+                            <div class="col-3">
+                                <label class="form-label" for="create_new_username">Username</label>
+                            </div>
+                            <div class="col-9">
+                                <input class="form-input" type="text" name="create_new_username" placeholder="Username" pattern="[a-zA-Z][a-zA-Z0-9-_\.]{1,20}$">
+                            </div>
+                        </div>
+                        <!-- create_new_password -->
+                        <div class="form-group">
+                            <div class="col-3">
+                                <label class="form-label" for="create_new_password">Password</label>
+                            </div>
+                            <div class="col-9">
+                                <input class="form-input" type="password" name="create_new_password" placeholder="Password">
+                            </div>
+                        </div>
+                        <!-- create_new_submit -->
+                        <div class="form-group">
+                            <div class="col-9 col-ml-auto">
+                                <button class="btn btn-primary" name="create_new_submit" type="submit">Create new</button>
+                                <a href="/login" class="btn btn-link">Already created an account?</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+{% include 'pre-footer.html' %}
+
+</div><!-- ./content -->
+
+{% include 'footer.html' %}

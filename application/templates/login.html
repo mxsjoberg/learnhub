@@ -1,0 +1,84 @@
+{% include 'head.html' %}
+
+<div id="content" class="m-0">
+
+{% include 'notifications.html' %}
+
+{% include 'modals/changelog.html' %}
+
+{% include 'modals/reset_password.html' %}
+
+<div class="container">
+    <div class="columns">
+        <div class="column col-8 col-sm-12 col-mx-auto">
+            <!-- intro -->
+            <div class="columns hero">
+                <div class="column hero-body text-center">
+                    <h1 class="m-0">
+                        <a href="/" style="text-decoration:none;box-shadow:none;">
+                            <img src="{{ url_for('static', filename='fav.png') }}" style="max-height:38px;margin-bottom:-6px;">
+                            <span class="ml-2 font-weight-bold">{{ domain }}</span>
+                            <small class="label">{{ version }}</small>
+                        </a>
+                    </h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container pb-xl">
+    <div class="columns">
+        <div class="column col-8 col-sm-12 col-mx-auto">
+            <!-- login or create -->
+            <div class="columns">
+                <!-- login -->
+                <div class="column">
+                    <h3>Login</h3>
+                    <form method="post" enctype="multipart/form-data">
+                        <input name="form_type" value="login" hidden>
+                        <!-- login_email -->
+                        <div class="form-group">
+                            <label class="form-label" for="login_email">Email</label>
+                            <input class="form-input" type="email" id="login_email" name="login_email" placeholder="Email">
+                        </div>
+                        <!-- login_password -->
+                        <div class="form-group">
+                            <label class="form-label" for="login_password">Password</label>
+                            <input class="form-input" type="password" id="login_password" name="login_password" placeholder="Password">
+                        </div>
+                        <!-- login_submit -->
+                        <div class="form-group">
+                            <button class="btn btn-primary btn-block" name="login_submit" type="submit" id="login_submit">Login</button>
+                        </div>
+                        <a id="button_reset_password">Reset password</a>
+                    </form>
+                </div>
+
+                <div class="divider-vert" data-content="OR"></div>
+
+                <!-- create new -->
+                <div class="column">
+                    <h3>Create new</h3>
+                    <form method="post" enctype="multipart/form-data">
+                        <!-- create_email -->
+                        <div class="form-group">
+                            <label class="form-label" for="create_email">Email</label>
+                            <input class="form-input" type="email" name="create_email" placeholder="michael@doolio.co">
+                        </div>
+                        <!-- create_submit -->
+                        <div class="form-group">
+                            <button class="btn btn-primary btn-block mt-2" name="create_submit" type="submit">Next</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% include 'pre-footer.html' %}
+
+</div><!-- ./content -->
+
+{% include 'footer.html' %}

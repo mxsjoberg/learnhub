@@ -1,0 +1,186 @@
+@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900");
+
+/* Constants
+------------------------------------------------------- */
+$FONT_FAMILY_BASE        : "Source Sans Pro", sans-serif;
+$FONT_WEIGHT_BASE        : 400;
+$FONT_WEIGHT_BOLD        : 600;
+
+// colors
+$COLOR_AZURE            : #38B1CC;
+$COLOR_EMERALD          : #2CB299;
+$COLOR_VIOLET           : #8E5D9F;
+$COLOR_YELLOW           : #EFC32F;
+$COLOR_RED              : #E44C41;
+
+$COLOR_WHITE_BASE       : #FFFFFF;
+$COLOR_WHITE_SMOKE      : #F4F4F4;
+$COLOR_DARK_BASE        : #202020;
+
+/* alerts */ 
+$COLOR_INFO             : #1854A0;
+$COLOR_WARNING          : #FED36D;
+$COLOR_DANGER           : #F96A67;
+$COLOR_SUCCESS          : #5AE057;
+
+/* override colors */
+$primary-color          : $COLOR_RED;
+$dark-color             : $COLOR_DARK_BASE;
+$link-color             : $COLOR_DARK_BASE;
+$success-color          : $COLOR_DARK_BASE;
+$warning-color          : $COLOR_DARK_BASE;
+$error-color            : $COLOR_DARK_BASE;
+
+@import "spectre/spectre";
+
+/* Base
+------------------------------------------------------- */
+//html { background-color: $COLOR_WHITE_BASE; }
+
+body {
+    height              : 100%;
+    overflow            : hidden;
+    font-family         : $FONT_FAMILY_BASE;
+    font-weight         : $FONT_WEIGHT_BASE; 
+    background-color    : $COLOR_WHITE_BASE;
+}
+
+a { cursor: pointer; }
+
+#content {
+    position                : absolute;
+    top                     : 0;
+    bottom                  : 0;
+    left                    : 0;
+    right                   : 0;
+    overflow                : auto; 
+    margin-top              : 52px; 
+}
+
+#content { overflow-y: auto; } 
+
+.container {
+    padding-left        : .8rem;
+    padding-right       : .8rem;
+}
+
+.empty { background-color: transparent; }
+
+.chip { 
+    margin              : 0;
+    margin-right        : .1rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5 { font-weight: $FONT_WEIGHT_BOLD; }
+
+.color-white { color: $COLOR_WHITE_BASE !important; }
+
+.font-weight-base { font-weight: $FONT_WEIGHT_BASE !important; }
+.font-weight-bold { font-weight: $FONT_WEIGHT_BOLD !important; }
+
+.form-input {
+    border-radius: 
+    &:focus {
+        @include control-shadow($dark-color);
+        border-color: $dark-color;
+    }
+}
+
+.form-select {
+    &:focus {
+        @include control-shadow($dark-color);
+        border-color: $dark-color;
+    }
+}
+
+.form-select:not([multiple]):not([size]) { background: transparent; }
+
+.select2-container--default.select2-container--focus .select2-selection--multiple {
+    border: $border-width solid $border-color-dark;
+
+    &:focus {
+        @include control-shadow($dark-color);
+        border-color: $dark-color;
+    }
+}
+
+li.select2-search.select2-search--inline { margin-top: 0; }
+
+li.select2-selection__choice { font-size: 95%; }
+
+span.select2-container { width: 100% !important; }
+
+span.select2-container--default .select2-selection--multiple .select2-selection__clear { display: none; }
+
+.label { background-color: transparent; }
+
+.btn.btn-link:focus,
+.btn.btn-link:hover,
+.btn.btn-link:active,
+.btn.btn-link.active {
+    color: $primary-color;
+    box-shadow: none;
+}
+
+a:focus,
+a:hover,
+a:active,
+a.active { box-shadow: none; }
+
+a.btn:visited { color: $primary-color; }
+a.btn.btn-link:visited { color: $dark-color; }
+a.btn.btn-primary:visited { color: $COLOR_WHITE_BASE; }
+
+a svg:focus,
+a svg:hover,
+a svg:active,
+a svg.active { opacity: 0.75; }
+
+.avatar { 
+    background-color    : transparent;
+    border              : 0.2rem solid $COLOR_WHITE_BASE;
+}
+
+.avatar.avatar-xl {
+    height              : 6rem;
+    width               : 6rem;
+}
+
+#notifications {
+    position            : fixed;
+    z-index             : 4000; 
+    bottom              : .8rem;
+    left                : 0;
+    right               : 0;
+    width               : 400px;
+    margin-left         : auto;
+    margin-right        : auto;
+}
+
+#notifications .toast { padding: .8rem; }
+
+.modal-container { box-shadow: none; }
+
+.p-4 { padding: .8rem !important; }
+.pl-4 { padding-left: .8rem !important; }
+
+.pt-3 { padding-top: .6rem !important; }
+.pb-3 { padding-bottom: .6rem !important; }
+
+.pt-4 { padding-top: 0.8rem !important; }
+.pb-4 { padding-bottom: 0.8rem !important; }
+
+.pt-5 { padding-top: 1rem !important; }
+.pb-5 { padding-bottom: 1rem !important; }
+
+.pt-xl { padding-top: 2rem !important }
+.pb-xl { padding-bottom: 2rem !important }
