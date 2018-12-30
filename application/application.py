@@ -9,7 +9,7 @@ from passlib.hash import sha256_crypt
 from library.functions import *
 
 application = Flask(__name__)
-application.debug = True
+application.debug = False
 
 if (application.debug):
 	# compile sass files
@@ -25,7 +25,7 @@ application.config['MAIL_USE_TLS'] = False
 application.config['MAIL_USE_SSL'] = True
 mail = Mail(application)
 
-#sslify = SSLify(application)
+sslify = SSLify(application)
 application.secret_key = os.environ['SECRET_KEY']
 application.domain = "LearnHub.io"
 application.version = "Beta"
