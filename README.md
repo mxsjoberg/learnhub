@@ -58,6 +58,7 @@
 ## Other
 
     [ ] Add Google Analytics
+    [ ] Add Product Hunt vote button
     [ ] Add GetSiteControl (discontinued, alternative?)
     [ ] Add guard for database connection (if no internet or otherwise)
 
