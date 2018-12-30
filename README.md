@@ -8,6 +8,9 @@
     [X] Button to remove user details
     [X] Delete account
     [X] Reset password
+
+### +++
+
     [ ] Delete user-created pathways on account deletion (or remove from owners if multiple)
 
 ## Create pathways
@@ -48,14 +51,17 @@
 
 ## Presentation
 
+    [ ] Add explore pathways action button to startpage
+
 ## Other
 
     [ ] Add Google Analytics
     [ ] Add GetSiteControl (discontinued, alternative?)
-    [ ] Add guard for database connection
+    [ ] Add guard for database connection (if no internet or otherwise)
 
 ### +++
 
     [ ] Control modal open with data-tag
     [ ] Replace non-unique element-ID with data-tag (errorprone with jquery)
+    [ ] Revise responsive design (all pages)
 
