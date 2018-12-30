@@ -8,6 +8,7 @@
     [X] Button to remove user details
     [X] Delete account
     [X] Reset password
+    [ ] Delete user-created pathways on account deletion (or remove from owners if multiple)
 
 ## Create pathways
 
