@@ -12,8 +12,8 @@
 ### +++
     
     [X] Upload avatar not working (URI too long?)
-    [ ] Delete user-created pathways on account deletion (or remove from owners if multiple)
-    [ ] Update username in pathways when changing username
+    [ ] Delete user-created pathways on account deletion (or remove from owners if multiple) (ADD IMUTABLE ID TO USERS FIRST)
+    [ ] Update username in pathways when changing username (ADD IMUTABLE ID TO USERS FIRST)
 
 ## Create pathways
 
