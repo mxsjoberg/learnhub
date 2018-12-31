@@ -15,6 +15,8 @@ if (application.debug):
 	# compile sass files
 	import sass
 	sass.compile(dirname=('static/sass', 'static/css'), output_style='compressed')
+else:
+	sslify = SSLify(application)
 
 # mail config
 application.config['MAIL_SERVER']= os.environ['MAIL_SERVER']
@@ -25,7 +27,6 @@ application.config['MAIL_USE_TLS'] = False
 application.config['MAIL_USE_SSL'] = True
 mail = Mail(application)
 
-sslify = SSLify(application)
 application.secret_key = os.environ['SECRET_KEY']
 application.domain = "LearnHub.io"
 application.version = "Beta"
@@ -506,10 +507,11 @@ def account_update_location():
 	else:
 		return jsonify(response=False)
 
-@application.route('/_account_update_avatar')
+@application.route('/_account_update_avatar', methods=['GET', 'POST'])
 def account_update_avatar():
 	user_id = session.get('email')
-	new_avatar = request.args.get('account_update_avatar')
+	# new_avatar = request.args.get('account_update_avatar')
+	new_avatar = request.json
 
 	# update_avatar
 	if (update_avatar(new_avatar, user_id, COLLECTION_USERS) == True):

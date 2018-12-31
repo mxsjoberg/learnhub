@@ -105,6 +105,30 @@ $(document).ready(function() {
         }
     };
     // update avatar
+    // var update_avatar = function(account_update_avatar) {
+    //     var reader = new FileReader();
+    //     reader.readAsDataURL(account_update_avatar);
+    //     reader.onload = function () {
+    //         var image = reader.result
+    //         // check result
+    //         if (image) {
+    //             $.getJSON($SCRIPT_ROOT + '/_account_update_avatar', {
+    //                 account_update_avatar: image
+    //             }, function(data) {
+    //                 if (data.response == true) {
+    //                     notification("Successfully updated avatar", "error");
+    //                 } else {
+    //                     notification("Something went wrong.", "error");
+    //                 }
+    //             });
+    //         }
+    //         else {
+    //             notification("Invalid file.", "error");
+    //         }
+    //     };
+    // };
+
+    // update avatar TEST
     var update_avatar = function(account_update_avatar) {
         var reader = new FileReader();
         reader.readAsDataURL(account_update_avatar);
@@ -112,12 +136,17 @@ $(document).ready(function() {
             var image = reader.result
             // check result
             if (image) {
-                $.getJSON($SCRIPT_ROOT + '/_account_update_avatar', {
-                    account_update_avatar: image
-                }, function(data) {
-                    if (data.response == true) {
+                $.ajax({
+                    //dataType: "json",
+                    type: "POST",
+                    url: $SCRIPT_ROOT + "/_account_update_avatar",
+                    data: JSON.stringify(image, null, "\t"),
+                    contentType: "application/json;charset=UTF-8",
+                    success: function(response){
+                        //console.log(response)
                         notification("Successfully updated avatar", "error");
-                    } else {
+                    },
+                    error: function(response){
                         notification("Something went wrong.", "error");
                     }
                 });
@@ -127,6 +156,7 @@ $(document).ready(function() {
             }
         };
     };
+
     // update facebook
     var update_facebook = function(account_update_facebook) {
         $.getJSON($SCRIPT_ROOT + '/_account_update_facebook', {

@@ -10,10 +10,10 @@
     [X] Reset password
 
 ### +++
-
+    
+    [X] Upload avatar not working (URI too long?)
     [ ] Delete user-created pathways on account deletion (or remove from owners if multiple)
     [ ] Update username in pathways when changing username
-    [ ] Upload avatar not working (URI too long?)
 
 ## Create pathways
 
