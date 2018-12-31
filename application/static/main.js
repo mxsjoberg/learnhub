@@ -105,30 +105,6 @@ $(document).ready(function() {
         }
     };
     // update avatar
-    // var update_avatar = function(account_update_avatar) {
-    //     var reader = new FileReader();
-    //     reader.readAsDataURL(account_update_avatar);
-    //     reader.onload = function () {
-    //         var image = reader.result
-    //         // check result
-    //         if (image) {
-    //             $.getJSON($SCRIPT_ROOT + '/_account_update_avatar', {
-    //                 account_update_avatar: image
-    //             }, function(data) {
-    //                 if (data.response == true) {
-    //                     notification("Successfully updated avatar", "error");
-    //                 } else {
-    //                     notification("Something went wrong.", "error");
-    //                 }
-    //             });
-    //         }
-    //         else {
-    //             notification("Invalid file.", "error");
-    //         }
-    //     };
-    // };
-
-    // update avatar TEST
     var update_avatar = function(account_update_avatar) {
         var reader = new FileReader();
         reader.readAsDataURL(account_update_avatar);
@@ -156,7 +132,6 @@ $(document).ready(function() {
             }
         };
     };
-
     // update facebook
     var update_facebook = function(account_update_facebook) {
         $.getJSON($SCRIPT_ROOT + '/_account_update_facebook', {
@@ -518,8 +493,27 @@ $(document).ready(function() {
         });
         return false;
     });
+    // AJAX delete pathway
+    // $("body").on('click', 'button[name=button_delete_pathway_submit]', function () {
+    //     var button_pathway_id = $(this).attr('data-pathway-id');
+    //     var input_pathway_id = $('input[name=edit_pathway_id]').val()
 
-    // AJAX delete pathway HERE
+    //     if (button_pathway_id == input_pathway_id) {
+    //         console.log(button_pathway_id);
+    //     }
+
+    //     // $.getJSON($SCRIPT_ROOT + '/_delete_pathway', {
+    //     //     pathway_id: pathway_id
+    //     // }, function(data) {
+    //     //     if (data.response == true) {
+    //     //         notification("Successfully deleted pathway.", "error");
+    //     //         location.reload();
+    //     //     } else {
+    //     //         notification("Something went wrong.", "error");
+    //     //     }
+    //     // });
+    //     return false;
+    // });
 
     /* modals
     ------------------------------------------------------- */
@@ -585,6 +579,13 @@ $(document).ready(function() {
         $('input[name=edit_pathway_name]').val(pathway_name);
         $('#modal_edit_pathway').addClass('active');
     });
+    // open delete pathway modal
+    $("body").on('click', 'button[name=button_delete_pathway_submit]', function () {
+        var pathway_id = $('input[name=edit_pathway_id]').val();
+
+        $('input[name=delete_pathway_id]').attr('value', pathway_id);
+        $('#modal_delete_pathway').addClass('active');
+    });
 
     /* other
     ------------------------------------------------------- */
@@ -608,27 +609,6 @@ $(document).ready(function() {
         console.log(pinned_pathways)
         localStorage.setItem('pinned_pathways', pinned_pathways);
     });
-
-    // $("body").on('load', function() {
-    //     // get pinned pathways (SEPARATE THIS INTO FUNCTION)
-    //     var pinned_pathways = localStorage.getItem('pinned_pathways');
-    //     if (!pinned_pathways) {
-    //         pinned_pathways = []
-    //     } else {
-    //         pinned_pathways = pinned_pathways.split(',');
-    //     }
-
-    //     // change button text based on pinned pathways
-    //     $('#button_pin_pathway').each(function() {
-    //         var pathway_id = $(this).attr('data-pathway-id');
-    //         if (pinned_pathways.includes(pathway_id)) {
-    //             $(this).text('Unpin');
-    //         } else {
-    //             $(this).text('Pin');
-    //         }
-    //     });
-    // })
-
     // remove account value on delete
     $("body").on('click', 'a.remove-account-detail', function () {
         var account_detail_id = $(this).attr('id');

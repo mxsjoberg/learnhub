@@ -62,8 +62,13 @@
             </div>
         </div>
         <div class="modal-footer">
+            {% if email %}
+            <button class="btn btn-primary float-left" name="button_delete_pathway_submit" type="submit">Delete</button>
+            {% endif %}
             <a class="btn btn-secondary close" aria-label="Close">Close</a>
+            {% if email %}
             <button class="btn btn-primary" name="button_add_resource_submit" type="submit">Add resource</button>
+            {% endif %}
         </div>
     </div>
 </div>

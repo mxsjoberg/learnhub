@@ -455,4 +455,15 @@ def get_pathway_resources(pathway_id, DB):
 	except:
 		return False
 
+def delete_pathway(pathway_id, DB):
+	'''Delete pathway.'''
+
+	try:
+		DB.remove({"_id": pathway_id})
+
+		return True
+
+	except:
+		return False
+
 # ----------------------------------------- #

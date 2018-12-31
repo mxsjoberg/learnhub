@@ -9,7 +9,7 @@ from passlib.hash import sha256_crypt
 from library.functions import *
 
 application = Flask(__name__)
-application.debug = False
+application.debug = True
 
 if (application.debug):
 	# compile sass files
@@ -206,23 +206,49 @@ def settings(title="Settings"):
 		# general error
 		return redirect(url_for('index'))
 
-@application.route('/explore')
+@application.route('/explore', methods=['GET', 'POST'])
 def explore():
 	'''This is the explore page.'''
 
 	user_id = session.get('email')
 
 	try:
+		# define user details (if logged in)
 		if (get_user_account(user_id, COLLECTION_USERS) != False):
 			user_account = get_user_account(user_id, COLLECTION_USERS)
 			username = user_account["username"]
 			email = user_account["email"]
+			password = user_account["password"]
 		else:
 			username = False
 			email = False
+			password = False
 
 		# get pathways
 		pathways = get_pathways(COLLECTION_PATHWAYS)
+
+		# delete pathway
+		if ('delete_pathway_submit' in request.form):
+			# get pathway id and owner
+			pathway_id = request.form['delete_pathway_id']
+			pathway_owner = get_pathway_owner(pathway_id, COLLECTION_PATHWAYS)
+
+			# check that user is owner
+			if (username == pathway_owner):
+				# check password
+				if (sha256_crypt.verify(request.form['delete_pathway_password'], password)):
+					if (delete_pathway(pathway_id, COLLECTION_PATHWAYS) == True):
+						flash(u"Successfully deleted pathway", "success")
+						return redirect(url_for('explore'))
+					else:
+						flash(u"Something went wrong", "error")
+						return redirect(url_for('explore'))
+				else:
+					flash(u"Wrong password.", "error")
+					return redirect(url_for('explore'))
+			else:
+				flash(u"You are not owner.", "error")
+				return redirect(url_for('explore'))
 
 		return render_template('explore.html',
 							   title="Explore",
