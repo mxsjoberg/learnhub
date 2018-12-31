@@ -168,7 +168,10 @@ a svg.active { opacity: 0.75; }
 
 #notifications .toast { padding: .8rem; }
 
-.modal-container { box-shadow: none; }
+.modal-container { 
+    max-height          : 100%;
+    box-shadow          : none;
+}
 
 .p-4 { padding: .8rem !important; }
 .pl-4 { padding-left: .8rem !important; }

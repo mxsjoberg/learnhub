@@ -387,7 +387,7 @@ def logout(title="Logout"):
 
 	session.clear()
 
-	return redirect(url_for('login'))
+	return redirect(url_for('explore'))
 
 @application.errorhandler(404)
 def page_not_found(error, title="Page not found"):

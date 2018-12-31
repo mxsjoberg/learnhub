@@ -3,7 +3,9 @@
 		<section class="navbar-section">
 			<img src="{{ url_for('static', filename='fav.png') }}" style="max-height: 24px;"> 
 			<a href="/" class="btn btn-link ml-2">Home</a>
+			{% if email %}
 			<a href="/explore" class="btn btn-link">Explore</a>
+			{% endif %}
 		</section>
 		<section class="navbar-section">
 			{% if email %}
@@ -11,6 +13,7 @@
 			<a href="/settings" class="btn btn-link ml-2">Settings</a>
 			<a href="/logout" class="btn btn-link">Logout</a>
 			{% else %}
+			<a href="/login" class="btn btn-link">Login</a>
 			{% endif %}
 		</section>
 	</header>

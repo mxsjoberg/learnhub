@@ -37,8 +37,7 @@
 
 ### +++
 
-    [X] Pin pathway to top (bookmark)
-            Add button to get pathway_id and add to localstorage, then each load get pathways from localstorage first.
+    [X] Pin pathway to top (bookmark): Add button to get pathway_id and add to localstorage, then each load get pathways from localstorage first.
 
 ## Projects
 
@@ -53,13 +52,10 @@
 
 ## Presentation
 
-    [ ] Add explore pathways action button to startpage
-
 ## Other
 
-    [ ] Add Google Analytics
+    [X] Add Google Analytics
     [ ] Add Product Hunt vote button
-    [ ] Add GetSiteControl (discontinued, alternative?)
     [ ] Add guard for database connection (if no internet or otherwise)
 
 ### +++
@@ -67,4 +63,3 @@
     [ ] Control modal open with data-tag
     [ ] Replace non-unique element-ID with data-tag (errorprone with jquery)
     [ ] Revise responsive design (all pages)
-
