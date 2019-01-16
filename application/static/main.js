@@ -1,4 +1,42 @@
 $(document).ready(function() {
+    /* Stripe
+    ------------------------------------------------------- */
+    var stripe = Stripe('pk_live_BpvLaK6nbAXUGf3Cn1Vbl4x3', {
+        betas: ['checkout_beta_4']
+    });
+
+    $("body").on('click', 'button.checkout-button', function () {
+        var type = this.getAttribute('data-type');
+        var sku = this.getAttribute('data-sku');
+
+        // once or plan
+        if (type == 'once') {
+            stripe.redirectToCheckout({
+                items: [{sku: sku, quantity: 1}],
+                successUrl: 'https://learnhub.io/success',
+                cancelUrl: 'https://learnhub.io/canceled',
+            })
+            .then(function (result) {
+                if (result.error) {
+                    var displayError = document.getElementById('error-message');
+                    displayError.textContent = result.error.message;
+                }
+            });
+        } else if (type == 'plan') {
+            stripe.redirectToCheckout({
+                items: [{plan: sku, quantity: 1}],
+                successUrl: 'https://learnhub.io/success',
+                cancelUrl: 'https://learnhub.io/canceled',
+            })
+            .then(function (result) {
+                if (result.error) {
+                    var displayError = document.getElementById('error-message');
+                    displayError.textContent = result.error.message;
+                }
+            });
+        }
+    });
+
     /* Functions
     ------------------------------------------------------- */
     // get pinned pathways in localstorage

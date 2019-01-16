@@ -389,6 +389,21 @@ def logout(title="Logout"):
 
 	return redirect(url_for('login'))
 
+@application.route('/success')
+def success(title="Thank you!"):
+	'''This is the payment success page.'''
+
+	return render_template('success.html',
+							title=title,
+							domain=application.domain,
+							version=application.version)
+
+@application.route('/canceled')
+def canceled():
+	'''This is the payment canceled page.'''
+
+	return redirect(url_for('login'))
+
 @application.errorhandler(404)
 def page_not_found(error, title="Page not found"):
 	'''This is the error page.'''

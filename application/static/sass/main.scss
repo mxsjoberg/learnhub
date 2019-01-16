@@ -65,6 +65,9 @@ a { cursor: pointer; }
     padding-right       : .8rem;
 }
 
+.bg-dark-smoke { background-color: $COLOR_DARK_SMOKE; }
+.bg-white-smoke { background-color: $COLOR_WHITE_SMOKE; }
+
 .empty { background-color: transparent; }
 
 .chip { 
