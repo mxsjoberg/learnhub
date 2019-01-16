@@ -2,6 +2,13 @@
 
 # TODO
 
+## Prio
+    
+    [ ] Add social share button to profile page (MAKE SURE META IMAGES WORK FIRST)
+    [ ] Delete user-created pathways on account deletion (or remove from owners if multiple) (ADD IMUTABLE ID TO USERS FIRST)
+    [ ] Update username in pathways when changing username (ADD IMMUTABLE ID TO USERS FIRST)
+    [ ] Route and page to show and share individual pathways (/pathways/<pathway_id>)
+
 ## Base
 
     [X] Button to remove avatar (set to default)
@@ -12,8 +19,6 @@
 ### +++
     
     [X] Upload avatar not working (URI too long?)
-    [ ] Delete user-created pathways on account deletion (or remove from owners if multiple) (ADD IMUTABLE ID TO USERS FIRST)
-    [ ] Update username in pathways when changing username (ADD IMUTABLE ID TO USERS FIRST)
 
 ## Create pathways
 
@@ -27,7 +32,6 @@
     
     [ ] Edit pathway details
     [ ] Validate pathway form inputs (no special characters etc.)
-    [ ] Route and page to show and share individual pathways (/pathways/<pathway_id>)
 
 ## Explore pathways
 
@@ -53,16 +57,14 @@
 ## Presentation
 
     [X] Create landing page with mockup profile and action buttons (see Doolio.co)
-    [ ] Add social share button to profile page
 
 ## Other
 
     [X] Add Google Analytics
     [ ] Add guard for database connection (if no internet or otherwise)
-    [ ] Add social share buttons to profile page
 
 ### +++
-
+    
+    [-] Revise responsive design (all pages)
     [ ] Control modal open with data-tag
     [ ] Replace non-unique element-ID with data-tag (errorprone with jquery)
-    [ ] Revise responsive design (all pages)
