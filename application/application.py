@@ -9,7 +9,7 @@ from passlib.hash import sha256_crypt
 from library.functions import *
 
 application = Flask(__name__)
-application.debug = False
+application.debug = True
 
 if (application.debug):
 	# compile sass files

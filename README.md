@@ -52,13 +52,12 @@
 
 ## Presentation
 
-    [-] Create landing page with mockup profile and action buttons (see Doolio.co)
+    [X] Create landing page with mockup profile and action buttons (see Doolio.co)
     [ ] Add social share button to profile page
 
 ## Other
 
     [X] Add Google Analytics
-    [ ] Add Product Hunt vote button
     [ ] Add guard for database connection (if no internet or otherwise)
     [ ] Add social share buttons to profile page
 
