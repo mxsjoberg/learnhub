@@ -9,7 +9,7 @@ from passlib.hash import sha256_crypt
 from library.functions import *
 
 application = Flask(__name__)
-application.debug = True
+application.debug = False
 
 if (application.debug):
 	# compile sass files
@@ -387,7 +387,7 @@ def logout(title="Logout"):
 
 	session.clear()
 
-	return redirect(url_for('explore'))
+	return redirect(url_for('login'))
 
 @application.errorhandler(404)
 def page_not_found(error, title="Page not found"):

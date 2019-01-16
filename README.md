@@ -52,7 +52,8 @@
 
 ## Presentation
 
-    [ ] Create landing page with mockup profile and action buttons (see Doolio.co)
+    [-] Create landing page with mockup profile and action buttons (see Doolio.co)
+    [ ] Add social share button to profile page
 
 ## Other
 

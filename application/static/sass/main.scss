@@ -16,6 +16,7 @@ $COLOR_RED              : #E44C41;
 $COLOR_WHITE_BASE       : #FFFFFF;
 $COLOR_WHITE_SMOKE      : #F4F4F4;
 $COLOR_DARK_BASE        : #202020;
+$COLOR_DARK_SMOKE       : rgba($COLOR_DARK_BASE, 0.25);
 
 /* alerts */ 
 $COLOR_INFO             : #1854A0;
@@ -69,7 +70,43 @@ a { cursor: pointer; }
 .chip { 
     margin              : 0;
     margin-right        : .1rem;
+    background          : $COLOR_DARK_SMOKE !important; 
 }
+
+.bar {
+    background          : $COLOR_WHITE_SMOKE;
+    border-radius       : .1rem;
+}
+
+.image-transform-wrapper {
+    .image-transform-right {
+        max-width           : 100%;
+        transform           : perspective(200px) rotateY(0deg);
+
+        -webkit-transition  : transform 0.1s ease-out 0.1s;
+        -moz-transition     : transform 0.1s ease-out 0.1s;
+        -o-transition       : transform 0.1s ease-out 0.1s;
+        transition          : transform 0.1s ease-out 0.1s;
+    }
+    .image-transform-left {
+        max-width           : 100%;
+        transform           : perspective(200px) rotateY(2deg);
+
+        -webkit-transition  : transform 0.1s ease-out 0.1s;
+        -moz-transition     : transform 0.1s ease-out 0.1s;
+        -o-transition       : transform 0.1s ease-out 0.1s;
+        transition          : transform 0.1s ease-out 0.1s;
+    }
+    // .image-transform-right:hover { transform: perspective(200px) rotateY(0deg); }
+    // .image-transform-left:hover { transform: perspective(200px) rotateY(0deg); }
+}
+
+.image-transform-wrapper:hover {
+    .image-transform-right { transform: perspective(200px) rotateY(-2deg); }
+    .image-transform-left { transform: perspective(200px) rotateY(0deg); }
+}
+
+
 
 h1,
 h2,
@@ -83,12 +120,15 @@ h5,
 .h5 { font-weight: $FONT_WEIGHT_BOLD; }
 
 .color-white { color: $COLOR_WHITE_BASE !important; }
+.color-white-smoke { color: $COLOR_WHITE_SMOKE !important; }
+.color-dark-smoke { color: $COLOR_DARK_SMOKE !important; }
+.color-primary { color: $primary-color !important; }
 
 .font-weight-base { font-weight: $FONT_WEIGHT_BASE !important; }
 .font-weight-bold { font-weight: $FONT_WEIGHT_BOLD !important; }
 
 .form-input {
-    border-radius: 
+    // border-radius: 0;
     &:focus {
         @include control-shadow($dark-color);
         border-color: $dark-color;
@@ -147,7 +187,7 @@ a svg.active { opacity: 0.75; }
 
 .avatar { 
     background-color    : transparent;
-    border              : 0.2rem solid $COLOR_WHITE_BASE;
+    // border              : 0.2rem solid $COLOR_WHITE_BASE;
 }
 
 .avatar.avatar-xl {
@@ -173,6 +213,12 @@ a svg.active { opacity: 0.75; }
     box-shadow          : none;
 }
 
+.divider-vert::before { border-left: .05rem solid $COLOR_DARK_SMOKE; }
+.divider::before { border-top: .05rem solid $COLOR_DARK_SMOKE; }
+
+.divider[data-content]::after,
+.divider-vert[data-content]::after { color: $COLOR_DARK_SMOKE; }
+
 .p-4 { padding: .8rem !important; }
 .pl-4 { padding-left: .8rem !important; }
 
@@ -187,3 +233,7 @@ a svg.active { opacity: 0.75; }
 
 .pt-xl { padding-top: 2rem !important }
 .pb-xl { padding-bottom: 2rem !important }
+
+@media (max-width: $size-sm) {
+    .divider-vert { display: none; }
+}

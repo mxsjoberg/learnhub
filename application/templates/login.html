@@ -29,11 +29,11 @@
 
 <div class="container pb-xl">
     <div class="columns">
-        <div class="column col-8 col-sm-12 col-mx-auto">
+        <div class="column col-8 col-md-10 col-sm-12 col-mx-auto">
             <!-- login or create -->
             <div class="columns">
                 <!-- login -->
-                <div class="column">
+                <div class="column col-sm-12 pb-4">
                     <h3>Login</h3>
                     <form method="post" enctype="multipart/form-data">
                         <input name="form_type" value="login" hidden>
@@ -58,7 +58,7 @@
                 <div class="divider-vert" data-content="OR"></div>
 
                 <!-- create new -->
-                <div class="column">
+                <div class="column col-sm-12">
                     <h3>Create new</h3>
                     <form method="post" enctype="multipart/form-data">
                         <!-- create_email -->
@@ -71,6 +71,68 @@
                             <button class="btn btn-primary btn-block mt-2" name="create_submit" type="submit">Next</button>
                         </div>
                     </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container hero">
+    <div class="columns">
+        <div class="column col-10 col-sm-12 col-mx-auto">
+            <!-- create profile -->
+            <div class="columns image-transform-wrapper">
+                <div class="column col-4 col-md-12">
+                    <!-- <h1 class="color-dark-smoke"><i class="fas fa-user-circle"></i></h1> -->
+                    <h1>Create your own profile</h1>
+                    <ul>
+                        <li>Track skills and progress</li>
+                        <li>Get skill recommendations (based on other similar profiles) <a id="button_changelog" style="text-decoration:none;"><span class="chip font-weight-bold">Not available yet</span></a></li>
+                    </ul>
+                </div>
+                <div class="column col-8 col-md-12">
+                    <img class="image-transform-right" src="{{ url_for('static', filename='print_profile.jpg') }}">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container hero pt-0">
+    <div class="columns">
+        <div class="column col-10 col-sm-12 col-mx-auto">
+            <!-- projects -->
+            <div class="columns image-transform-wrapper">
+                <div class="column col-6 col-md-12">
+                    <h1>Focus on skill development</h1>
+                    <ul>
+                        <li>Add projects as evidence to progress</li>
+                        <li>Get project recommendations to help develop your skills <a id="button_changelog" style="text-decoration:none;"><span class="chip font-weight-bold">Not available yet</span></a></li>
+                    </ul>
+                </div>
+                <div class="column col-6 col-md-12">
+                    <img class="image-transform-right" src="{{ url_for('static', filename='print_skills.jpg') }}">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container hero pt-0">
+    <div class="columns">
+        <div class="column col-10 col-sm-12 col-mx-auto">
+            <!-- pathways -->
+            <div class="columns image-transform-wrapper">
+                <div class="column col-4 col-md-12">
+                    <h1>Collaborate and create learning pathways</h1>
+                    <ul>
+                        <li>Find pathways based on skill level</li>
+                        <li>Create pathways to learn new skills or help others</li>
+                        <li>Save pathway to profile to keep yourself accountable <a id="button_changelog" style="text-decoration:none;"><span class="chip font-weight-bold">Not available yet</span></a></li>
+                    </ul>
+                </div>
+                <div class="column col-8 col-md-12">
+                    <img class="image-transform-right" src="{{ url_for('static', filename='print_pathways.jpg') }}">
                 </div>
             </div>
         </div>
