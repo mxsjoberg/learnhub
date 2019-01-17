@@ -5,9 +5,9 @@
 ## Prio
     
     [ ] Add social share button to profile page (MAKE SURE META IMAGES WORK FIRST)
+    [ ] Route and page for individual pathways (/pathways/<pathway_id>), use explore as search and preview only, use this page for editing (to avoid reloading after adding resource etc.)
     [ ] Delete user-created pathways on account deletion (or remove from owners if multiple) (ADD IMUTABLE ID TO USERS FIRST)
     [ ] Update username in pathways when changing username (ADD IMMUTABLE ID TO USERS FIRST)
-    [ ] Route and page to show and share individual pathways (/pathways/<pathway_id>)
 
 ## Base
 
@@ -61,6 +61,7 @@
 ## Other
 
     [X] Add Google Analytics
+    [ ] Transform explore page into "learning hub", search pathways, select pathways, and follow-up on progress etc. (interactive)
     [ ] Add guard for database connection (if no internet or otherwise)
 
 ### +++
