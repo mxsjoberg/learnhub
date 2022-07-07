@@ -1,5 +1,12 @@
 # LearnHub.io
 
+# SCREENSHOTS
+
+![1](https://github.com/michaelsjoeberg/learnhub.io/blob/master/print_login.png)
+![2](https://github.com/michaelsjoeberg/learnhub.io/blob/master/print_pathways_edit.png)
+![3](https://github.com/michaelsjoeberg/learnhub.io/blob/master/print_pathways.png)
+![4](https://github.com/michaelsjoeberg/learnhub.io/blob/master/print_profile.png)
+
 # TODO
 
 ## Prio
